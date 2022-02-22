@@ -1,0 +1,57 @@
+{
+    "customers": [
+        {
+            "id": 1,
+            "name": "Dave"
+        },
+        {
+            "id": 2,
+            "name": "Sarah"
+        },
+        {
+            "id": 5,
+            "name": "Otis"
+        }        ,
+        {
+            "id": 33,
+            "name": "Marry"
+        }
+    ],
+    "packages": [
+        {
+            "id": "pak1",
+            "weight": "3kg",
+            "customerid": 1,
+            "price": 10,
+            "shippingOrder": 4
+        },
+        {
+            "id": "pak2",
+            "weight": "4kg",
+            "customerid": 1,
+            "price": 20,
+            "shippingOrder": 3
+        },
+        {
+            "id": "pak3",
+            "weight": "6kg",
+            "customerid": 2,
+            "price": 50,
+            "shippingOrder": 1
+        },
+        {
+            "id": "pak4",
+            "weight": "2kg",
+            "customerid": 2,
+            "price": 14,
+            "shippingOrder":2
+        },
+        {
+            "id": "pak5",
+            "weight": "23kg",
+            "customerid": 5,
+            "price": 2400,
+            "shippingOrder":5
+        }
+    ]
+}
