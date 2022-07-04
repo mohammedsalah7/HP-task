@@ -1,0 +1,15 @@
+.container-form{
+    display: flex;
+    flex-direction: column;
+    height:400px;
+    justify-content: space-between;
+}
+.title{
+    margin: 9px auto;
+}
+.container-buttons{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+}
