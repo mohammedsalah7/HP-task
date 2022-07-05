@@ -7,7 +7,6 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableFooter from "@mui/material/TableFooter";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import useInvoces from "../../customHook/useInvoces";
 import { DeliveryContext } from "../../context";
 import { getCustomerNameById } from "../../Functions";
@@ -24,8 +23,16 @@ function Invoice() {
     setCustomerName(getCustomerNameById(customerId, appData.customers));
   }, [appData.customers, customerId]);
 
+  const style = {
+    border: "none",
+    "&:last-child": {
+      backgroundColor: "#808080",
+    },
+  };
   return (
+    //  Invoice Page
     <div className="container">
+      {/* header Section  */}
       <section className="details">
         <article className="left-side">
           <span>{date}</span>
@@ -33,64 +40,63 @@ function Invoice() {
         </article>
         <section className="right-side">
           <h1>Invoice</h1>
-          <span>No {customerId + 10}</span>
+          <span>No. {customerId}</span>
         </section>
       </section>
-      <TableContainer component={Paper}>
-        <Table
-          sx={{ width: "95%", marginLeft: "40px", overflow: "hidden" }}
-          aria-label="simple table"
-        >
+      {/* Table Section  */}
+      <TableContainer sx={{ marginTop: "5%", boxShadow: "none" }}>
+        <Table sx={{ maxWidth: 1250 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell sx={{ fontWeight: "bold", fontSize: "18px" }}>
-                ID
-              </TableCell>
-              <TableCell sx={{ fontWeight: "bold", fontSize: "18px" }}>
-                {" "}
-                Weight
-              </TableCell>
-              <TableCell
-                sx={{
-                  width: "40%",
-                  backgroundColor: "#808080",
-                  fontWeight: "bold",
-                  fontSize: "18px",
-                }}
-              >
-                {" "}
-                Price
-              </TableCell>
+              <TableCell sx={style}>ID</TableCell>
+              <TableCell sx={style}>Weight</TableCell>
+              <TableCell sx={style}>Price</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {packages.map((row) => {
               return (
-                <TableRow key={row.id}>
-                  <TableCell sx={{ fontSize: "14px" }}>{row.id}</TableCell>
-                  <TableCell sx={{ fontSize: "14px" }}> {row.weight}</TableCell>
-                  <TableCell
-                    sx={{ backgroundColor: "#808080", fontSize: "14px" }}
-                  >
-                    {" "}
-                    {row.price}
-                  </TableCell>
+                <TableRow
+                  key={row.id}
+                  sx={{
+                    "&:last-child td, &:last-child th": { border: 0 },
+                  }}
+                >
+                  <TableCell sx={style}>{row.id}</TableCell>
+                  <TableCell sx={style}>{row.weight}</TableCell>
+                  <TableCell sx={style}>{row.price}</TableCell>
                 </TableRow>
               );
             })}
           </TableBody>
           <TableFooter>
             <TableRow>
-              <TableCell sx={{ fontSize: "14px" }}>Total</TableCell>
-              <TableCell sx={{ fontSize: "14px" }}> {weights}kg</TableCell>
-              <TableCell sx={{ backgroundColor: "#808080" }}>
-                {" "}
-                {prices}
+              <TableCell sx={style}></TableCell>
+              <TableCell
+                sx={{
+                  ...style,
+                  fontSize: "18px",
+                  fontWeight: "600",
+                  color: "#000",
+                }}
+              >
+                Total:{weights}kg
+              </TableCell>
+              <TableCell
+                sx={{
+                  ...style,
+                  fontSize: "18px",
+                  fontWeight: "600",
+                  color: "#000",
+                }}
+              >
+                Total : {prices}
               </TableCell>
             </TableRow>
           </TableFooter>
         </Table>
       </TableContainer>
+      {/*   Message Section  */}
       <section className="message">
         <p>
           You received <b>{packages.length}</b> packages

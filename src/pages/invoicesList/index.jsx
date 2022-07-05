@@ -21,6 +21,7 @@ const InvoicesList = () => {
   }, [appData]);
   return (
     <>
+      {/*  Invoices Table */}
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>

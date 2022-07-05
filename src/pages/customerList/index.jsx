@@ -12,10 +12,12 @@ import { DeliveryContext } from "../../context";
 import "./customer.css";
 
 
-const Coustom = () => {
+const Customers = () => {
   const { appData, handleDeleteCustomer } = useContext(DeliveryContext);
   return (
+    // Customers Page
     <div>
+      {/* Customers Table  */}
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
@@ -38,6 +40,7 @@ const Coustom = () => {
                   </TableCell>
                   <TableCell>{row.name}</TableCell>
                   <TableCell>
+                    {/* Create Invoice Button  */}
                     <Link to={`/invoice/${row.id}`} className="create-btn">
                       <Button
                         variant="contained"
@@ -49,6 +52,7 @@ const Coustom = () => {
                       </Button>
                     </Link>
                   </TableCell>
+                       {/* Delete Customer Button  */}
                   <TableCell>
                     <Button
                       variant="contained"
@@ -69,4 +73,4 @@ const Coustom = () => {
   );
 };
 
-export default Coustom;
+export default Customers;

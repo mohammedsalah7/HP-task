@@ -23,11 +23,10 @@ const Pakages = () => {
 
   useEffect(() => {
     const sortedPackages = appData.packages.sort((a, b) =>
-    a.shippingOrder > b.shippingOrder ? 1 : -1
-  );
+      a.shippingOrder > b.shippingOrder ? 1 : -1
+    );
     setPackagesList(sortedPackages);
   }, [appData]);
-
 
   // handle functon to re order Packages Up
   const reorderToUp = (index) => {
@@ -41,7 +40,7 @@ const Pakages = () => {
     });
   };
 
-    // handle functon to re order Packages Down
+  // handle functon to re order Packages Down
   const reorderToDown = (index) => {
     setPackagesList((prevState) => {
       if (index === prevState.length - 1) return prevState;
@@ -54,10 +53,9 @@ const Pakages = () => {
   };
   return (
     <>
-      <FormNewPackage
-        open={open}
-        handleFormDisplay={handleFormDisplay}
-      />
+      <FormNewPackage open={open} handleFormDisplay={handleFormDisplay} />
+
+      {/* Packages  Table  */}
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
@@ -66,7 +64,6 @@ const Pakages = () => {
               <TableCell>Customer Name</TableCell>
               <TableCell>Weight</TableCell>
               <TableCell>Price</TableCell>
-
               <TableCell>
                 <IconButton
                   size="large"
@@ -93,10 +90,10 @@ const Pakages = () => {
                   <TableCell>
                     {getCustomerNameById(row.customerid, appData.customers)}
                   </TableCell>
-
                   <TableCell>{row.weight}</TableCell>
                   <TableCell>{row.price}</TableCell>
                   <TableCell>
+                    {/* Delete Package Button  */}
                     <Button
                       variant="contained"
                       onClick={() => {
@@ -105,7 +102,7 @@ const Pakages = () => {
                     >
                       Delete
                     </Button>
-
+                    {/* Up order  Button  */}
                     <ArrowCircleUpIcon
                       sx={{
                         width: "50px",
@@ -114,6 +111,7 @@ const Pakages = () => {
                         reorderToUp(index);
                       }}
                     />
+                    {/* Down order  Button  */}
                     <ArrowCircleDownIcon
                       sx={{
                         width: "50px",

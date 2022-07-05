@@ -10,12 +10,13 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import { Link } from "react-router-dom";
-import "./style.css"
+import "./style.css";
 const NavBar = () => {
   const [open, setOpen] = useState(false);
 
   const handleSideBar = () => setOpen(!open);
   return (
+    // NavBar Componet
     <div>
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
@@ -41,30 +42,31 @@ const NavBar = () => {
         open={open}
         onClose={handleSideBar}
         sx={{
-          width:150,
+          width: 150,
           flexShrink: 0,
           "& .MuiDrawer-paper": {
-            width:150,
+            width: 150,
             boxSizing: "border-box",
             marginTop: 8,
-            marginRight:500,
+            marginRight: 500,
           },
         }}
         variant="persistent"
       >
+        {/* Links Pages Section */}
         <List style={{ width: "300px" }}>
-          <Link to="/"   className="link" >
-            <ListItem button   onClick={() => handleSideBar()}>
+          <Link to="/" className="link">
+            <ListItem button onClick={() => handleSideBar()}>
               <ListItemText primary={"Customers"} />
             </ListItem>
           </Link>
-          <Link to="/pakage"  className="link">
+          <Link to="/pakage" className="link">
             <ListItem button onClick={() => handleSideBar()}>
               <ListItemText primary={"Packages"} />
             </ListItem>
           </Link>
-          <Link to="/invoices"  className="link"  >
-            <ListItem button  onClick={() => handleSideBar()}>
+          <Link to="/invoices" className="link">
+            <ListItem button onClick={() => handleSideBar()}>
               <ListItemText primary={"Invoices"} />
             </ListItem>
           </Link>

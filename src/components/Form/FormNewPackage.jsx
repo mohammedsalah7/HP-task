@@ -10,7 +10,7 @@ import Select from "@mui/material/Select";
 import { addPackage, inputsValidation, checkInputEmpty } from "../../Functions";
 import { DeliveryContext } from "../../context";
 import "./style.css";
-
+//  Empty object input Errors
 const inputsErrors = {
   id: "",
   weight: "",
@@ -18,7 +18,7 @@ const inputsErrors = {
   shippingOrder: "",
   customerid: "",
 };
-
+//  Empty object of new Package
 const newPackageValue = {
   weight: "",
   price: "",
@@ -27,14 +27,16 @@ const newPackageValue = {
 
 function FormNewPackage({ open, handleFormDisplay }) {
   const { appData, setAppData } = useContext(DeliveryContext);
-  const [newPackageDetailes, setNewPackageDetailes] = useState(
-    newPackageValue
-  );
+  const [newPackageDetailes, setNewPackageDetailes] = useState(newPackageValue);
   const [errors, setErrors] = useState(inputsErrors);
 
+  //  handle funtion to set value object of new Package
   const handleInputChange = (value) => {
     setNewPackageDetailes(value);
   };
+
+  //  handle funtion to make validate on all input values
+
   const validateInputs = () => {
     const errs = inputsValidation(newPackageDetailes);
     setErrors(errs);
@@ -45,6 +47,9 @@ function FormNewPackage({ open, handleFormDisplay }) {
       return true;
     return false;
   };
+
+  //  handle funtion to set inputs values in object Package
+
   const addNewPackage = () => {
     if (validateInputs()) {
       const { newAppData } = addPackage(
@@ -55,13 +60,13 @@ function FormNewPackage({ open, handleFormDisplay }) {
         },
         appData
       );
-    
       setAppData(newAppData);
       handleFormDisplay();
       setNewPackageDetailes(newPackageValue);
     }
   };
   return (
+    // From Component
     <div>
       <Modal
         open={open}
@@ -81,6 +86,7 @@ function FormNewPackage({ open, handleFormDisplay }) {
             padding: 3,
           }}
         >
+          {/* form Section */}
           <form className="container-form">
             <h3 className="title"> Hi! Add New Package</h3>
             <TextField
@@ -108,7 +114,10 @@ function FormNewPackage({ open, handleFormDisplay }) {
               error={errors.price ? true : false}
               helperText={errors.price}
               onChange={(event) =>
-                handleInputChange({ ...newPackageDetailes, price: event.target.value })
+                handleInputChange({
+                  ...newPackageDetailes,
+                  price: event.target.value,
+                })
               }
               value={newPackageDetailes.price}
             />
@@ -144,6 +153,7 @@ function FormNewPackage({ open, handleFormDisplay }) {
               value={appData.packages.length + 1}
             />
             <div className="container-buttons">
+              {/* Cancel Button */}
               <Button
                 size="medium"
                 variant="contained"
@@ -152,7 +162,7 @@ function FormNewPackage({ open, handleFormDisplay }) {
               >
                 X
               </Button>
-
+              {/* Add new Package Button */}
               <Button
                 size="medium"
                 variant="contained"

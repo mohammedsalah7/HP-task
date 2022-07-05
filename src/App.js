@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Pakages from "./pages/packageList";
-import Coustom from "./pages/customerList";
+import Customers from "./pages/customerList";
 import NavBar from "./components/Navbar";
 import InvoicesList from "./pages/invoicesList";
 import Invoice from "./pages/invoces";
@@ -11,12 +11,14 @@ import "./App.css";
 function App() {
   return (
     <div>
+      {/* set Context  such as a wrapper */}
       <DeliveryProvider>
+         {/* setting routes */}
         <Router>
           <NavBar />
           <Switch>
             <Route exact path="/">
-              <Coustom />
+              <Customers />
             </Route>
             <Route exact path="/pakage">
               <Pakages />
