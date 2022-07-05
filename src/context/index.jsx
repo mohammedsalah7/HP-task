@@ -12,7 +12,7 @@ const DeliveryProvider = ({ children }) => {
   }, []);
 
   const handleDeleteCustomer = (id) => {
-    let newCustomersResults = appData.customers.filter((item) => {
+    let newCustomersResults = appData.customers?.filter((item) => {
       return item.id !== id;
     });
 
